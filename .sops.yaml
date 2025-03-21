@@ -1,0 +1,5 @@
+creation_rules:
+  - age: >- 
+      age1zha7783jexcxhn6uu6su9elelca49hw4hnwgpcyypmzuc9z3u9asgnk3uq
+    #encrypted_regex: '^(token|stringData)$'
+    encrypted_comment_regex: '(?i)\b(secret)\b(?-i)'

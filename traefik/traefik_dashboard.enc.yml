@@ -1,0 +1,51 @@
+# Create an IngressRoute for the dashboard
+ingressRoute:
+    dashboard:
+        enabled: true
+        # Custom match rule with host domain
+        matchRule: Host(`traefik.luigi.ovh`)
+        entryPoints:
+            - web
+        # Add custom middlewares : authentication and redirection
+        middlewares:
+            - name: dashboard-auth
+# Create the custom middlewares used by the IngressRoute dashboard (can also be created in another way).
+# /!\ Yes, you need to replace "changeme" password with a better one. /!\
+extraObjects:
+    - apiVersion: v1
+      kind: Secret
+      metadata:
+        name: dashboard-auth-secret
+      type: kubernetes.io/basic-auth
+      stringData:
+        # secret
+        username: ENC[AES256_GCM,data:G4N/Ogc=,iv:NUOut51arlgmuFksF/VLJLdjqSKGcYfBL6Y1iHiZ7HY=,tag:EA+iwym5rmqNm+17cUuRig==,type:str]
+        # secret
+        password: ENC[AES256_GCM,data:N9yYso0A,iv:FniCjarC+qXxnGAuqRnLq/ocxC1on6FHPOIDXLxbD3w=,tag:wahq/ILm2PmXmnNU5K1zVQ==,type:str]
+    - apiVersion: traefik.io/v1alpha1
+      kind: Middleware
+      metadata:
+        name: dashboard-auth
+      spec:
+        basicAuth:
+            secret: dashboard-auth-secret
+sops:
+    kms: []
+    gcp_kms: []
+    azure_kv: []
+    hc_vault: []
+    age:
+        - recipient: age1zha7783jexcxhn6uu6su9elelca49hw4hnwgpcyypmzuc9z3u9asgnk3uq
+          enc: |
+            -----BEGIN AGE ENCRYPTED FILE-----
+            YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSBFZGVadklKRUE3VzlTaWdk
+            TEdGaXVJajI5SHV3VzBTQVcvWnE3KzRzMGhJCjNPQng0bXRqUVpmUFFhZzlOYmdR
+            REtDSkQzTUZBd0dJWm55NFgzWjdHU0UKLS0tIDQ1eVpBM2Z0Vkc4ekpxN2RXQkZw
+            anBjYUJHRGNiK1cvb3FRT3pXK3hFUjAKluGBwpxmTGHHg+HPAi2f+puYC/5eY5L5
+            wjE+zn9zu2gOTIXaijKNNsCdCfhgkQHdhFu3doVYhCHToulzisz1ig==
+            -----END AGE ENCRYPTED FILE-----
+    lastmodified: "2025-03-21T15:26:28Z"
+    mac: ENC[AES256_GCM,data:q9z+BYQaBWsUf0xJ0KtyR/qvLYIo+JbZTNvS0nOuzGRp7QclEvA1TMyHU1HdhjOX/Er9TwH9QdZ2uXw7vF/mk769Bitoh+nN/a9OWINutUXMlNcUFTY2Brur30vQ2Rk9FDsxJQP3KnuH5lPYrtq6WBNx8IxFO4E5LjuHmHNvIgQ=,iv:lQH8Mp8PmRg42FqsvYinugbWsfWi7lkQVt7tdJY20oc=,tag:8gmtRPG01OnTpMvemSMRWA==,type:str]
+    pgp: []
+    encrypted_comment_regex: (?i)\b(secret)\b(?-i)
+    version: 3.9.4

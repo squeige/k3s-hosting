@@ -1,0 +1,21 @@
+ports:
+  web:
+    port: 8000
+    protocol: TCP
+  websecure:
+    port: 8443
+    protocol: TCP
+    tls:
+      enabled: true
+      certResolver: ""
+      domains: []
+  traefik:
+    port: 8080
+    exposedPort: 8080
+    targetPort: traefik
+    protocol: TCP
+
+api:
+  dashboard: true  # Make sure the dashboard is enabled
+  insecure: true   # For testing, allows you to access the dashboard without authentication (optional)
+

@@ -1,0 +1,11 @@
+# Command to install
+# We will install base k3s with traefik disabled, so that we can manually install a newer version ourselves, also I like to manage the k3s ranches with the group k3s.
+curl -sfL https://get.k3s.io | INSTALL_K3S_EXEC="server" sh -s - --config $HOME/k3s/k3s-config/k3s_config.yaml
+
+
+# After the install well copy the current k3s config to our local config so that we avoid permissions, finally install helm
+mkdir -p ~/.kube/
+kubectl config view --raw >~/.kube/config
+dnf install helm
+
+

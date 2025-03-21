@@ -1,0 +1,6 @@
+kubectl describe svc traefik -n traefik
+kubectl version api-version
+kubectl get ingressclass
+kubectl get crds | grep ingressroute
+helm install traefik traefik/traefik -n traefik --create-namespace
+helm install traefik traefik/traefik -n traefik --create-namespace

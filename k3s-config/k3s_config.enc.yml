@@ -1,0 +1,26 @@
+disable: traefik
+write-kubeconfig-mode: "0644"
+write-kubeconfig-group: k3s
+cluster-init: true
+# SecRet
+token: ENC[AES256_GCM,data:BzQJ1Xck/kXQ,iv:eUon1n7IfhzxM7LSGef+yAkTA1RXwt8yn+JW0WBZbcY=,tag:0fKBNzKw/bTyS47zUnJgmA==,type:str]
+sops:
+    kms: []
+    gcp_kms: []
+    azure_kv: []
+    hc_vault: []
+    age:
+        - recipient: age1zha7783jexcxhn6uu6su9elelca49hw4hnwgpcyypmzuc9z3u9asgnk3uq
+          enc: |
+            -----BEGIN AGE ENCRYPTED FILE-----
+            YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSBjVmxCSXNxWjkrOEt4czBH
+            MTBYNVdoRTdwdngrcGN3blB6V3QvQ3Z1Y2xrCk1ETC9zdzNLRHVwclVvck1lTFNl
+            SG12TTNkMlJqTktJcDNDRlhoSUVaNXcKLS0tIGxteGo0REFXR0M3Y1VOTHJNeWpy
+            L2x5c041S0hqSTdYbnUxdzFZWEFmbU0Kg4BRYy9exrV/QLSt8Yxc0Cvkw91q5WpD
+            ADkTo5x31JtBuhmbLlhIP9wGamuGR2Xsw9p73fnCanBO4fieRR6x3A==
+            -----END AGE ENCRYPTED FILE-----
+    lastmodified: "2025-03-15T23:44:08Z"
+    mac: ENC[AES256_GCM,data:+IG3DlxRkgk/bnH4sqMXGO9n0v2nUBK1zkZXlA7v+FbSyufNy1lzGeixwkS79Iz2MwPQcZx38pRjl9Wnw5ltNMlK0kmL2wsaCmpaC2HprKrFidDNTqfVdFAMpyiKGh5NNW72dEQ19qiNar2/RpTyzFgYWasitQVK73p1qZuEHVI=,iv:CbUvJX02ac8Kf0SRnp9LOc8kMRF5LT4nmHyh98MmuJU=,tag:r9ZR4A+BhQT+v7M2v2y1Og==,type:str]
+    pgp: []
+    encrypted_comment_regex: (?i)\b(secret)\b(?-i)
+    version: 3.9.4
