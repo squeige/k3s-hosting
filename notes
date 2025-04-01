@@ -1,0 +1,2 @@
+# Update helm charts
+helm repo update

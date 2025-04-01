@@ -1,0 +1,13 @@
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: luigi.ovh-staging
+  namespace: cert-manager
+spec:
+  commonName: test.luigi.ovh
+  dnsNames:
+    - test.luigi.ovh
+  issuerRef:
+    name: letsencrypt-staging
+    kind: ClusterIssuer
+  secretName: test.luigi.ovh

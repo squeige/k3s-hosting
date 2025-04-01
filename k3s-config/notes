@@ -1,0 +1,6 @@
+# Install K3s
+curl -sfL https://get.k3s.io | INSTALL_K3S_EXEC="server" sh -s - --config $HOME/k3s/k3s-config/k3s_config.yml
+
+# create .kube dir, copy the kubecontrol file to our home so we are allowed to interact
+mkdir -p ~/.kube/
+sudo kubectl config view --raw >~/.kube/config

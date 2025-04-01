@@ -1,0 +1,12 @@
+# Install Traefik Resource Definitions:
+kubectl apply -f https://raw.githubusercontent.com/traefik/traefik/v3.3/docs/content/reference/dynamic-configuration/kubernetes-crd-definition-v1.yml
+
+# Install RBAC for Traefik:
+kubectl apply -f https://raw.githubusercontent.com/traefik/traefik/v3.3/docs/content/reference/dynamic-configuration/kubernetes-crd-rbac.yml
+
+# Install Traefik Helm Chart
+helm repo add traefik https://traefik.github.io/charts
+
+# Rolling restart 
+kubectl rollout restart deployment -n traefik traefik 
+
