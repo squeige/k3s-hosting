@@ -1,0 +1,21 @@
+apiVersion: traefik.io/v1alpha1
+kind: IngressRoute
+metadata:
+  name: longhorn
+  namespace: longhorn-system
+spec:
+  entryPoints:
+    - websecure  # This should match the entry point defined for HTTPS traffic in Traefik
+  routes:
+    - match: Host(`longhorn.luigi.ovh`) 
+      kind: Rule
+      #middlewares:
+      #  - name: basic-auth  # Middleware for authentication (make sure it's correctly defined)
+      #    namespace: traefik
+      services:
+        - name: longhorn-frontend  # The service you're routing to
+          namespace: longhorn-system
+          port: 80  # Ensure the service is exposed on port 80
+  tls:
+    secretName: luigi.ovh  # TLS secret containing the certificate for the domain
+

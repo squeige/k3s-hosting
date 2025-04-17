@@ -10,3 +10,5 @@ helm repo add traefik https://traefik.github.io/charts
 # Rolling restart 
 kubectl rollout restart deployment -n traefik traefik 
 
+# username and password for basic-auth
+echo -n "luigi" | base64
